@@ -50,7 +50,8 @@ exports.getBookings = async (req, res, next) => {
       const sortBy = req.query.sort.split(",").join(" ");
       query = query.sort(sortBy);
     } else {
-      query = query.sort("checkInDate"); // Default sorting by check-in date
+      // Default sorting by check-in date
+      query = query.sort("checkInDate"); 
     }
 
     // Pagination setup
@@ -167,7 +168,7 @@ exports.updateBooking = async (req, res, next) => {
       if (!booking) {
           return res.status(404).json({ success: false, message: `No Booking with the id of ${req.params.id}` });
       }
-
+      
       // Make sure user is the booking owner or an admin
       if (booking.user.toString() !== req.user.id && req.user.role !== 'admin') {
           return res.status(401).json({ success: false, message: `User ${req.user.id} is not authorized to update this booking` });

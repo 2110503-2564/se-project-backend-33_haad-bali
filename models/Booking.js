@@ -9,7 +9,8 @@ const BookingSchema = new mongoose.Schema({
         required: true
     },    
     duration: {
-        type: String // Store "day(s)" format
+        // Store "day(s)" format
+        type: String 
     },
     breakfast:{
         type: Boolean,
@@ -64,5 +65,6 @@ BookingSchema.pre('findOneAndUpdate', async function (next) {
 
     next();
 });
+
 
 module.exports = mongoose.model('Booking', BookingSchema);
