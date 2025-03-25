@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const cookieParser=require('cookie-parser');
 const connectDB = require('./config/db');
 
+const cors = require('cors');
+
 //Load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -12,6 +14,10 @@ app.use(express.json());
 
 //Cookie parser
 app.use (cookieParser());
+
+//use cors
+app.use(cors());
+
 
 //connect db
 connectDB();
@@ -31,7 +37,24 @@ app.use('/api/v1/auth',auth);
  });
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, console.log('Server running in ', process.env.NODE_ENV, ' mode on port', PORT));
+const server = app.listen(PORT, console.log('Server running in ', process.env.NODE_ENV, 
+  "on" +process.env.HOST+":"+PORT));
+  const swaggerOptions = {
+    swaggerDefinition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Library API',
+        version: '1.0.0',
+        description: 'Car Booking API'
+      },
+      servers: [
+        {
+          url: process.env.HOST + ':' + PORT + '/api/v1'
+        }
+      ]
+    }
+  };
+  
 
 //Handle unhandled promise rejections 
 process.on('unhandledRejection', (err,promise)=>{
