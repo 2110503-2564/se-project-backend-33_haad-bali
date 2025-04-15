@@ -26,15 +26,15 @@ connectDB();
 const campgrounds = require ('./routes/campgrounds');
 const bookings =require('./routes/bookings');
 const auth = require('./routes/Auth');
+const reviews = require('./routes/reviews');
 
 app.use('/api/v1/campgrounds', campgrounds)
 app.use('/api/v1/bookings',bookings);
 app.use('/api/v1/auth',auth);
  app.get('/', (req,res) => {
-   //1. res.send(<h1>Hello from express</h1>');
-    //res.send({name:'Brad'});
    res.status(200).json({success:true, data:{id:1}});
  });
+ app.use('/api/v1/reviews', reviews);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log('Server running in ', process.env.NODE_ENV, 
