@@ -9,13 +9,15 @@ const {
 
 const { protect, authorize } = require('../middleware/auth');
 
-// Route to get all reviews or reviews under a specific campground
+const router = express.Router();
+
+// GET all promotions / POST a new promotion
 router
   .route('/')
   .get(getPromotions)
   .post(protect, authorize('admin', 'user'), addPromotion);
 
-// Route to get, update, or delete a specific review by ID
+// GET / PUT / DELETE a promotion by ID
 router
   .route('/:id')
   .get(getPromotion)
