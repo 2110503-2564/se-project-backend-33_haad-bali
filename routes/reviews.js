@@ -14,13 +14,13 @@ const router = express.Router({ mergeParams: true });
 // Route to get all reviews or reviews under a specific campground
 router
   .route('/')
-  .get(protect,getReviews)
+  .get(getReviews)
   .post(protect, authorize('admin', 'user'), addReview);
 
 // Route to get, update, or delete a specific review by ID
 router
   .route('/:id')
-  .get(protect, getReview)
+  .get(getReview)
   .put(protect, authorize('admin', 'user'), updateReview)
   .delete(protect, authorize('admin', 'user'), deleteReview);
 

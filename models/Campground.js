@@ -41,4 +41,11 @@ CampgroundSchema.virtual('bookings',{
     foreignField:'campground',
     justone:false
 });
+CampgroundSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'campground',
+    justOne: false
+});
+
 module.exports=mongoose.model('Campground',CampgroundSchema);
