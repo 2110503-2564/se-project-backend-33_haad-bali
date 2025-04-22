@@ -8,7 +8,7 @@ const usageSchema = new mongoose.Schema({
     required: true },
   promoCodeId: { 
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'PromoCode', 
+    ref: 'Promotion', 
     required: true },
   usedAt: { 
     type: Date, 
