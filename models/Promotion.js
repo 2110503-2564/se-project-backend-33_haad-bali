@@ -4,6 +4,7 @@ const PromotionSchema = new mongoose.Schema({
 
      promotionCode: {
         type: String,
+        unique: true,
         required: [true,'Please provide an code for promotion'] ,
         minlength: 1,
         maxlength: [10, 'Promo code can not be longer than 10 characters']
@@ -24,6 +25,10 @@ const PromotionSchema = new mongoose.Schema({
     usedCount: {
         type: Number ,
         default : 0
+    },
+    maxUses: {
+        type: Number,
+        default: 999
     }
 
 });

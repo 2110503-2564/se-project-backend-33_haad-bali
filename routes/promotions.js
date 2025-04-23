@@ -5,6 +5,7 @@ const {
   addPromotion,
   updatePromotion,
   deletePromotion,
+  applyPromotion,
 } = require('../controllers/promotions');
 
 const { protect, authorize } = require('../middleware/auth');
@@ -23,5 +24,10 @@ router
   .get(getPromotion)
   .put(protect, authorize('admin', 'user'), updatePromotion)
   .delete(protect, authorize('admin', 'user'), deletePromotion);
+
+// apply promotion
+router
+  .route('/apply')
+  .post(protect, authorize('admin', 'user'), applyPromotion);
 
 module.exports = router;
