@@ -20,6 +20,7 @@ const {protect, authorize} = require('../middleware/auth');
  *         - district
  *         - province
  *         - postalcode
+ *         - pricePerNight
  *       properties:
  *         id:
  *           type: string
@@ -27,7 +28,8 @@ const {protect, authorize} = require('../middleware/auth');
  *           description: Auto-generated ID of the campground
  *         name:
  *           type: string
- *           description: Campground name
+ *           description: Campground name (must be unique, max 50 characters)
+ *           maxLength: 50
  *         address:
  *           type: string
  *           description: Street address of the campground
@@ -39,13 +41,20 @@ const {protect, authorize} = require('../middleware/auth');
  *           description: Province where the campground is located
  *         postalcode:
  *           type: string
- *           description: 5-digit postal code
+ *           description: 5-digit postal code (max length 5)
+ *           maxLength: 5
  *         tel:
  *           type: string
  *           description: Contact phone number
+ *         pricePerNight:
+ *           type: number
+ *           description: Price per night for staying at the campground
  *         breakfast:
  *           type: boolean
- *           description: Indicates if breakfast is available
+ *           description: Indicates if breakfast is available (defaults to false)
+ *         breakfastPrice:
+ *           type: number
+ *           description: Additional price for breakfast (defaults to 0)
  */
 
 /**

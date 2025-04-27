@@ -6,50 +6,68 @@ const { getBookings,
     deleteBooking } = require('../controllers/bookings');
 
 /**
-* @swagger
-* components:
-*   schemas:
-*     Booking:
-*       type: object
-*       required:
-*         - CheckInDate
-*         - CheckOutDate
-*         - user
-*         - campground
-*       properties:
-*         id:
-*           type: string
-*           format: uuid
-*           description: The auto-generated id of the booking
-*         CheckInDate:
-*           type: string
-*           format: date
-*           description: The check-in date
-*         CheckOutDate:
-*           type: string
-*           format: date
-*           description: The check-out date
-*         duration:
-*           type: string
-*           description: The calculated duration in days
-*         breakfast:
-*           type: boolean
-*           default: false
-*         status:
-*           type: string
-*           enum: [pending, confirmed, checked-in, checked-out, cancelled]
-*           default: pending
-*         user:
-*           type: string
-*           description: The user ID who made the booking
-*         campground:
-*           type: string
-*           description: The associated campground ID
-*         createdAt:
-*           type: string
-*           format: date-time
-*           description: Date of booking creation
-*/
+ * @swagger
+ * components:
+ *   schemas:
+ *     Booking:
+ *       type: object
+ *       required:
+ *         - CheckInDate
+ *         - CheckOutDate
+ *         - user
+ *         - campground
+ *       properties:
+ *         id:
+ *           type: string
+ *           format: uuid
+ *           description: Auto-generated ID of the booking
+ *         CheckInDate:
+ *           type: string
+ *           format: date
+ *           description: Check-in date
+ *         CheckOutDate:
+ *           type: string
+ *           format: date
+ *           description: Check-out date
+ *         duration:
+ *           type: string
+ *           description: The calculated duration in days (e.g., "2 days")
+ *         breakfast:
+ *           type: boolean
+ *           default: false
+ *           description: Whether breakfast is included
+ *         pricePerNight:
+ *           type: number
+ *           description: Price per night from the campground at booking time
+ *         breakfastPrice:
+ *           type: number
+ *           description: Breakfast price per day
+ *         totalPrice:
+ *           type: number
+ *           description: Total price for the entire stay (including breakfast if selected)
+ *         status:
+ *           type: string
+ *           enum:
+ *             - pending
+ *             - confirmed
+ *             - checked-in
+ *             - checked-out
+ *             - cancelled
+ *           default: pending
+ *           description: Current booking status
+ *         user:
+ *           type: string
+ *           format: uuid
+ *           description: ID of the user who made the booking
+ *         campground:
+ *           type: string
+ *           format: uuid
+ *           description: ID of the associated campground
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: Timestamp when the booking was created
+ */
 
 /**
 * @swagger
