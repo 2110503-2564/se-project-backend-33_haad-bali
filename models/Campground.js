@@ -26,10 +26,18 @@ const CampgroundSchema = new mongoose.Schema({
     tel:{
         type: String
     },
+    pricePerNight: {
+        type: Number,
+        required: true
+    },
     breakfast:{
          type: Boolean,
          default:false
-    }
+    },
+    breakfastPrice: {
+        type: Number,
+        default: 0
+    },
     //Reverse populate with virtuals
 },{
     toJSON: {virtuals:true},
