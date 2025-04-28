@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1745823879671" clover="3.2.0">
+  <project timestamp="1745823879671" name="All files">
+    <metrics statements="43" coveredstatements="43" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2" elements="61" coveredelements="61" complexity="0" loc="43" ncloc="43" packages="2" files="5" classes="5"/>
+    <package name="models">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Campground.js" path="D:\backend for project (clone)\Back-End-for-project\models\Campground.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+      </file>
+      <file name="Promotion.js" path="D:\backend for project (clone)\Back-End-for-project\models\Promotion.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+      <file name="Review.js" path="D:\backend for project (clone)\Back-End-for-project\models\Review.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src">
+      <metrics statements="32" coveredstatements="32" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2"/>
+      <file name="applyPromotion.js" path="D:\backend for project (clone)\Back-End-for-project\src\applyPromotion.js">
+        <metrics statements="21" coveredstatements="21" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="10" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="getReviews.js" path="D:\backend for project (clone)\Back-End-for-project\src\getReviews.js">
+        <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
