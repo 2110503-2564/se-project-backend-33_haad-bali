@@ -62,7 +62,7 @@ const calculateTotalPrice = (pricePerNight, breakfastPrice, breakfastIncluded, c
     return (pricePerNight + breakfastCost) * days;
 };
 
-// Pre-save
+// Pre-save hook: Calculate totalPrice and other fields before saving
 BookingSchema.pre('save', async function (next) {
     if (this.CheckInDate && this.CheckOutDate) {
         this.duration = calculateDuration(this.CheckInDate, this.CheckOutDate);
@@ -78,52 +78,23 @@ BookingSchema.pre('save', async function (next) {
         this.pricePerNight = campground.pricePerNight;
         this.breakfastPrice = campground.breakfastPrice || 0;
 
-        this.totalPrice = calculateTotalPrice(
-            this.pricePerNight,
-            this.breakfastPrice,
-            this.breakfast,
-            this.CheckInDate,
-            this.CheckOutDate
-        );
+        // If totalPrice is not provided, calculate it; else, use the provided totalPrice
+        if (!this.totalPrice) {
+            this.totalPrice = calculateTotalPrice(
+                this.pricePerNight,
+                this.breakfastPrice,
+                this.breakfast,
+                this.CheckInDate,
+                this.CheckOutDate
+            );
+        }
     }
 
     next();
 });
 
-// Pre-findOneAndUpdate
+// Pre-findOneAndUpdate hook: Calculate totalPrice and other fields before updating
 BookingSchema.pre('findOneAndUpdate', async function (next) {
     const update = this.getUpdate();
     const booking = await this.model.findOne(this.getQuery());
-
-    const checkIn = update.CheckInDate || booking.CheckInDate;
-    const checkOut = update.CheckOutDate || booking.CheckOutDate;
-    const campgroundId = update.campground || booking.campground;
-    const breakfast = update.breakfast != null ? update.breakfast : booking.breakfast;
-
-    if (checkIn && checkOut) {
-        this.set({ duration: calculateDuration(checkIn, checkOut) });
-    }
-
-    if (campgroundId) {
-        const campground = await mongoose.model('Campground').findById(campgroundId);
-        if (!campground) {
-            return next(new Error('Campground not found'));
-        }
-
-        // Update pricePerNight and breakfastPrice
-        this.set({ pricePerNight: campground.pricePerNight });
-        this.set({ breakfastPrice: campground.breakfastPrice || 0 });
-
-        this.set({ totalPrice: calculateTotalPrice(
-            campground.pricePerNight,
-            campground.breakfastPrice || 0,
-            breakfast,
-            checkIn,
-            checkOut
-        )});
-    }
-
-    next();
 });
-
-module.exports = mongoose.model('Booking', BookingSchema);
