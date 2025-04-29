@@ -98,3 +98,4 @@ BookingSchema.pre('findOneAndUpdate', async function (next) {
     const update = this.getUpdate();
     const booking = await this.model.findOne(this.getQuery());
 });
+module.exports=mongoose.model('Booking',BookingSchema);
